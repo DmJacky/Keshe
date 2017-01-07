@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">KeShe</string>
+    <string name="m_tv">Handler的简单实验</string>
+    <string name="title">携走出行、快乐便捷</string>
+    <string name="btn_txt_home">首页</string>
+    <string name="btn_txt_order">订单</string>
+    <string name="btn_txt_user">我的</string>
+    <string name="edt_home_hint_from">出发城市</string>
+    <string name="edt_home_hint_to">目的城市</string>
+    <string name="btn_home_search">搜索</string>
+    <string name="btn_home_date">时间日期</string>
+    <string name="txt_home_recent">最近搜索：</string>
+    <string name="btn_home_tuangou">团购</string>
+</resources>
