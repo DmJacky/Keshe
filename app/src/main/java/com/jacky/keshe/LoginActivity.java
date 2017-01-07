@@ -4,10 +4,14 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.jacky.keshe.Utils.HTTP;
+import com.jacky.keshe.Utils.SharedPreferencesUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,14 +24,14 @@ public class LoginActivity extends AppCompatActivity {
     private EditText edt_login_password;
 
     Handler handler = new Handler();
-//    handler来处理多线程可以使用runnable接口，这里先定义该接口
+    //    handler来处理多线程可以使用runnable接口，这里先定义该接口
 //    线程中运行该接口的run函数
     Runnable update_thread = new Runnable() {
         @Override
         public void run() {
             //在线程运行的逻辑
             textView.append("\nupdate...");
-            handler.postDelayed(update_thread,1000);
+            handler.postDelayed(update_thread, 1000);
         }
     };
 
@@ -35,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //隐藏标题栏
-        if (getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
         setContentView(R.layout.activity_login);
@@ -43,20 +47,20 @@ public class LoginActivity extends AppCompatActivity {
         initView();
     }
 
-    private void initView(){
+    private void initView() {
         textView = (TextView) findViewById(R.id.main_textView2);
         edt_login_user = (EditText) findViewById(R.id.edt_login_phone);
         edt_login_password = (EditText) findViewById(R.id.edt_login_password);
     }
 
-    private void doLogin(){
+    private void doLogin() {
         String phone = edt_login_user.getText().toString();
         String password = edt_login_password.getText().toString();
-        if(phone.length()!=11||password.equals("")){
-            Toast.makeText(this,"输入有误",Toast.LENGTH_SHORT).show();
+        if (phone.length() != 11 || password.equals("")) {
+            Toast.makeText(this, "输入有误", Toast.LENGTH_SHORT).show();
             return;
         }
-        HTTP.Post(phone,password,new HTTP.OnHttpStatusListener(){
+        HTTP.Post(phone, password, new HTTP.OnHttpStatusListener() {
             @Override
             public void Ok(final String text) {
                 runOnUiThread(new Runnable() {
@@ -70,8 +74,18 @@ public class LoginActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
-                        Toast.makeText(getApplicationContext(),txt,Toast.LENGTH_SHORT).show();
+                        if (txt.equals("SUCCESSED")) {
+                            Toast.makeText(LoginActivity.this, txt, Toast.LENGTH_SHORT).show();
+                            SharedPreferencesUtils.setBooleanValue(LoginActivity.this
+                                    , SharedPreferencesUtils.LOGINSTATUS, true);
+                            Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
+                            startActivity(intent);
+                            LoginActivity.this.finish();
+                        } else {
+                            SharedPreferencesUtils.setBooleanValue(LoginActivity.this
+                                    , SharedPreferencesUtils.LOGINSTATUS,false);
+                            Toast.makeText(LoginActivity.this, "用户名或密码错误！", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
             }
@@ -79,14 +93,14 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void Error() {
                 super.Error();
-                Toast.makeText(getApplicationContext(),"请求登录失败",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "请求登录失败", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    public void doClick(View view){
+    public void doClick(View view) {
         Intent intent;
-        switch(view.getId()){
+        switch (view.getId()) {
             case R.id.main_startBtn:
                 handler.post(update_thread);
                 break;
@@ -98,12 +112,12 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.main_tvZhuCe:
-                intent = new Intent(LoginActivity.this,RegisterActivity.class);
+                intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
                 finish();
                 break;
             case R.id.main_tvZhaoHui:
-                intent = new Intent(LoginActivity.this,ForgetPasswdActivity.class);
+                intent = new Intent(LoginActivity.this, ForgetPasswdActivity.class);
                 startActivity(intent);
                 finish();
                 break;

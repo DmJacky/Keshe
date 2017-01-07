@@ -46,13 +46,15 @@
                 android:layout_height="50dp"
                 android:src="@drawable/register_phone"/>
 
-            <TextView
-                android:gravity="center|start"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:ems="10"
+                android:id="@+id/edt_register_phone"
                 android:hint="请输入手机号码"
-                android:textColorHint="#b3b3b3"
-                android:textSize="20sp"/>
+                android:layout_weight="1" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -96,13 +98,15 @@
                 android:layout_height="50dp"
                 android:src="@drawable/register_password"/>
 
-            <TextView
-                android:gravity="center|start"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="请输入密码"
-                android:textColorHint="#b3b3b3"
-                android:textSize="20sp"/>
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/edt_register_password"
+                android:hint="输入4-16位密码"
+                android:layout_weight="1" />
+
         </LinearLayout>
 
     </LinearLayout>

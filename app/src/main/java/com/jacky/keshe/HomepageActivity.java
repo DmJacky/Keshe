@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.jacky.keshe.Fragment.HomeFragment;
 import com.jacky.keshe.Fragment.MineFragment;
 import com.jacky.keshe.Fragment.OrderFragment;
+import com.jacky.keshe.Utils.SharedPreferencesUtils;
 
 
 /**
@@ -33,11 +34,17 @@ public class HomepageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homepage);
-
-        Intent intent = new Intent(this,LoginActivity.class);
-        startActivity(intent);
+        userLogin();
 
         initView();
+    }
+
+    private void userLogin(){
+        if(!SharedPreferencesUtils.getBooleanValue(this,SharedPreferencesUtils.LOGINSTATUS)){
+            Intent intent = new Intent(this,LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     private void initView() {

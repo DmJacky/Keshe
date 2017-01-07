@@ -1,4 +1,4 @@
-package com.jacky.keshe;
+package com.jacky.keshe.Utils;
 
 import okhttp3.FormBody;
 import okhttp3.HttpUrl;
@@ -12,11 +12,12 @@ import okhttp3.Response;
  */
 
 public class HTTP {
-    private static String TAG_PHONE = "Number";
-    private static String TAG_CONTENT = "Content";
+    private static String TAG_PHONE = "phone";
+    private static String TAG_PASSWORD = "password";
 
     private static String host ="192.168.191.1";
     private static int port = 80;
+    private static String PathSegs = "keshe/login";
 
     public static void Post(final String number, final String text, final OnHttpStatusListener listener){
         new Thread(new Runnable() {
@@ -30,13 +31,12 @@ public class HTTP {
         OkHttpClient client = new OkHttpClient();
         RequestBody body = new FormBody.Builder()
                 .add(TAG_PHONE, number)
-                .add(TAG_CONTENT, text)
+                .add(TAG_PASSWORD, text)
                 .build();
         HttpUrl url = new HttpUrl.Builder()
                 .scheme("http")
                 .host(host).port(port)
-                .addPathSegment("keshe")
-                .addPathSegment("login")
+                .addPathSegments(PathSegs)
                 .build();
         Request request = new Request.Builder()
                 .url(url)
