@@ -15,6 +15,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jacky.keshe.Utils.HTTP;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+
 /**
  * Created by Jacky on 2016/12/28.
  */
@@ -82,7 +88,32 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(this, "输入有误", Toast.LENGTH_SHORT).show();
             return;
         }
-
+        HTTP.Post(phone,password,new HTTP.OnHttpStatusListener(){
+            @Override
+            public void Ok(final String text) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        JSONTokener taker = new JSONTokener(text);
+                        String txt = "";
+                        try {
+                            JSONObject obj = (JSONObject) taker.nextValue();
+                            txt = obj.getString("ret");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        if(txt.equals("SUCCESSED")){
+                            Toast.makeText(RegisterActivity.this,"注册成功",Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }else{
+                            Toast.makeText(RegisterActivity.this,"用户已注册",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
     }
 
     public void doClick(View v){
