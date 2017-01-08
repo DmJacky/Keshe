@@ -128,6 +128,12 @@ public class HomepageActivity extends AppCompatActivity {
                 }
                 replaceFragment(R.id.frame_home,mineFragment);
                 break;
+            case R.id.btn_logout:
+                SharedPreferencesUtils.setBooleanValue(this,SharedPreferencesUtils.LOGINSTATUS,false);
+                Intent intent = new Intent(this,LoginActivity.class);
+                startActivity(intent);
+                finish();
+                break;
         }
     }
 

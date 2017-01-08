@@ -60,39 +60,33 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "输入有误", Toast.LENGTH_SHORT).show();
             return;
         }
-        HTTP.Post(phone, password, new HTTP.OnHttpStatusListener() {
+        HTTP.Post(HTTP.login,phone, password, new HTTP.OnHttpStatusListener() {
             @Override
             public void Ok(final String text) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        JSONTokener taker = new JSONTokener(text);
-                        String txt = "";
-                        try {
-                            JSONObject obj = (JSONObject) taker.nextValue();
-                            txt = obj.getString("ret");
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                        if (txt.equals("SUCCESSED")) {
-                            Toast.makeText(LoginActivity.this, txt, Toast.LENGTH_SHORT).show();
-                            SharedPreferencesUtils.setBooleanValue(LoginActivity.this
-                                    , SharedPreferencesUtils.LOGINSTATUS, true);
-                            Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
-                            startActivity(intent);
-                            LoginActivity.this.finish();
-                        } else {
-                            SharedPreferencesUtils.setBooleanValue(LoginActivity.this
-                                    , SharedPreferencesUtils.LOGINSTATUS,false);
-                            Toast.makeText(LoginActivity.this, "用户名或密码错误！", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                JSONTokener taker = new JSONTokener(text);
+                String txt = "";
+                try {
+                    JSONObject obj = (JSONObject) taker.nextValue();
+                    txt = obj.getString("ret");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                if (txt.equals("SUCCESSED")) {
+                    Toast.makeText(LoginActivity.this, txt, Toast.LENGTH_SHORT).show();
+                    SharedPreferencesUtils.setBooleanValue(LoginActivity.this
+                            , SharedPreferencesUtils.LOGINSTATUS, true);
+                    Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
+                    startActivity(intent);
+                    LoginActivity.this.finish();
+                } else {
+                    SharedPreferencesUtils.setBooleanValue(LoginActivity.this
+                            , SharedPreferencesUtils.LOGINSTATUS, false);
+                    Toast.makeText(LoginActivity.this, "用户名或密码错误！", Toast.LENGTH_SHORT).show();
+                };
             }
 
             @Override
             public void Error() {
-                super.Error();
                 Toast.makeText(getApplicationContext(), "请求登录失败", Toast.LENGTH_SHORT).show();
             }
         });

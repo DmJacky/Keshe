@@ -45,7 +45,8 @@
                 android:maxLength="11"
                 android:hint="请输入手机号码"
                 android:id="@+id/edt_login_phone"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:background="@null"/>
         </LinearLayout>
 
         <LinearLayout
@@ -68,7 +69,8 @@
                 android:hint="4-16位密码"
                 android:maxLength="16"
                 android:id="@+id/edt_login_password"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:background="@null"/>
         </LinearLayout>
 
     </LinearLayout>

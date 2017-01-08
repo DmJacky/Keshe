@@ -48,12 +48,13 @@
 
             <EditText
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:inputType="phone"
                 android:ems="10"
                 android:id="@+id/edt_register_phone"
                 android:hint="请输入手机号码"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:background="@null"/>
 
         </LinearLayout>
 
@@ -100,12 +101,13 @@
 
             <EditText
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:inputType="textPassword"
                 android:ems="10"
                 android:id="@+id/edt_register_password"
                 android:hint="输入4-16位密码"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:background="@null"/>
 
         </LinearLayout>
 

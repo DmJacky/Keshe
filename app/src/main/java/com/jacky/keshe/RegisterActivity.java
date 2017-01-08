@@ -65,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
         checkBox = (CheckBox) findViewById(R.id.register_checkBox);
         btnZhuCe = (Button) findViewById(R.id.register_btnZhuCe);
         edtPhone = (EditText) findViewById(R.id.edt_register_phone);
-        edtPassword = (EditText) findViewById(R.id.edt_login_password);
+        edtPassword = (EditText) findViewById(R.id.edt_register_password);
 
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -88,7 +88,7 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(this, "输入有误", Toast.LENGTH_SHORT).show();
             return;
         }
-        HTTP.Post(phone,password,new HTTP.OnHttpStatusListener(){
+        HTTP.Post(HTTP.register,phone,password,new HTTP.OnHttpStatusListener(){
             @Override
             public void Ok(final String text) {
                 runOnUiThread(new Runnable() {
@@ -106,10 +106,20 @@ public class RegisterActivity extends AppCompatActivity {
                             Toast.makeText(RegisterActivity.this,"注册成功",Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
                             startActivity(intent);
-                            finish();
+                            RegisterActivity.this.finish();
                         }else{
                             Toast.makeText(RegisterActivity.this,"用户已注册",Toast.LENGTH_SHORT).show();
                         }
+                    }
+                });
+            }
+
+            @Override
+            public void Error() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(RegisterActivity.this,"网络请求失败",Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -131,7 +141,7 @@ public class RegisterActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.register_btnZhuCe:
-                Toast.makeText(this,"注册成功",Toast.LENGTH_SHORT).show();
+                doRegister();
                 break;
         }
     }

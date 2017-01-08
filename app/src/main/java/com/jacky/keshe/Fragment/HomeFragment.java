@@ -38,10 +38,11 @@ public class HomeFragment extends Fragment {
     private void initEvent() {
         int []view = {
                 R.drawable.shouye_guanggao,
-                R.drawable.login_dangjian_head_background,
+                R.drawable.xiezou_guanggao,
 
         };
         dots.addDot(view.length);
+        dots.dotShow(0);
         viewFliper.addImageView(view);
         viewFliper.autoFliper(3000);
         MyViewFliper.OnScrollListener listener = new MyViewFliper.OnScrollListener(){

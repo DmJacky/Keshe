@@ -34,7 +34,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="250px"
-        android:background="@drawable/login_dangjian_head_background"/>
+        android:background="@drawable/xiezou_guanggao"/>
 
     <LinearLayout
         android:orientation="vertical"
