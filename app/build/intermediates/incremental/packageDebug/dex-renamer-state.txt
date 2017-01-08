@@ -1,0 +1,7 @@
+#Sat Jan 07 23:06:19 CST 2017
+base.0=C\:\\Users\\Jacky\\Desktop\\somejob\\Andriod\\KeShe\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_1a2a3e9b59c2bd9469940233c2138b6f7fbbc5ff
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=C\:\\Users\\Jacky\\Desktop\\somejob\\Andriod\\KeShe\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_05e5aca52eb9ada3285c1736ee215000c02a5442\\classes.dex
+base.1=C\:\\Users\\Jacky\\Desktop\\somejob\\Andriod\\KeShe\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_05e5aca52eb9ada3285c1736ee215000c02a5442
+file.0=C\:\\Users\\Jacky\\Desktop\\somejob\\Andriod\\KeShe\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_1a2a3e9b59c2bd9469940233c2138b6f7fbbc5ff\\classes.dex

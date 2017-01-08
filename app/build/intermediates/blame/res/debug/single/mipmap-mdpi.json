@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\Users\\Jacky\\Desktop\\somejob\\Andriod\\KeShe\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\radio_button_gray.png",
+        "source": "C:\\Users\\Jacky\\Desktop\\somejob\\Andriod\\KeShe\\app\\src\\main\\res\\mipmap-mdpi\\radio_button_gray.png"
+    },
+    {
+        "merged": "C:\\Users\\Jacky\\Desktop\\somejob\\Andriod\\KeShe\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\radio_button_onclick.png",
+        "source": "C:\\Users\\Jacky\\Desktop\\somejob\\Andriod\\KeShe\\app\\src\\main\\res\\mipmap-mdpi\\radio_button_onclick.png"
+    },
+    {
+        "merged": "C:\\Users\\Jacky\\Desktop\\somejob\\Andriod\\KeShe\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\ic_launcher.png",
+        "source": "C:\\Users\\Jacky\\Desktop\\somejob\\Andriod\\KeShe\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    }
+]
